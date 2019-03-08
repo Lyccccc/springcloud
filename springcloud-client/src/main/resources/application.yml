@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: springcloud-client
+
+server:
+  port: 10001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10000/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port}:@project.version@
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 20
+    # 优先使用IP地址方式进行注册服务
+    prefer-ip-address: true
+    # 配置使用指定IP
+    ip-address: 127.0.0.1
+    # hostname: node1
+
